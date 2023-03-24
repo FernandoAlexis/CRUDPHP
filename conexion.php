@@ -1,7 +1,7 @@
 <?php
 
 
-    $host="loalhost";
+    $host="localhost";
     $user="root";
     $password="";
     $db="ecommerce";

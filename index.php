@@ -15,17 +15,20 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">Hello, world!</h1>
+        <h1 class="text-center">Tabla Registros</h1>
     </div>
 
-    <div class="container">
-        <table class="table">
+    <div class="container ">
+        <table class="table mt-5">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">NombreCategoria</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,24 +36,52 @@
                     <?php
                     require("conexion.php");
 
-                    $sql=$conexion->query("SELECT * FROM producto
-                        INNER JOIN categoria ON producto.CategoriaId=categoria.Id
-                        INNEER JOIN marcas ON productos.MarcaId = marcas.Id
+                    $sql = $conexion->query("SELECT * FROM productos
+                        INNER JOIN categorias ON productos.CategoriaId=categorias.Id
+                        INNER JOIN marcas ON productos.MarcaId = marcas.Id
                         ");
 
-                     while($resultado=$sql->fetch_assoc()) {
+                    if($sql){
+                        while($resultado=$sql->fetch_assoc()) {
+                            ?>
+    
+    
+                                <tr>
+                                    <th scope="row"><?php echo $resultado['IdProducto']?></th>
+                                    <th scope="row"><?php echo $resultado['NombreCategoria']?></th>
+                                    <th scope="row"><?php echo $resultado['NombreMarca']?></th>
+                                    <th scope="row"><?php echo $resultado['Precio']?></th>
+                                    <th scope="row"><?php echo $resultado['DescripcionProducto']?></th>
+                                    <th scope="row"><?php echo $resultado['Nombre']?></th>
+                                    <th>
+                                       
+                                        <button type="button" class="btn btn-warning" >Editar</button>
+                                        <button type="button" class="btn btn-danger">Eliminar</button>
+                                    </th>
+                                   
+                                </tr>
+    
+                                
+                        <?php
+                         }
+                        
+                        
+                    }else{
+                        printf("Error: %s\n", $conexion->error);
+                    }
                     ?>
 
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
+                     
+
+               
 
             </tbody>
         </table>
+
+        <div class="container">
+            
+            <a class="btn btn-success" href="agregar.php">Agregar Nuevo</a>
+        </div>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
