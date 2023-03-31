@@ -15,40 +15,68 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">Tabla Registros</h1>
+        <form  action="controlador.php" method="POST">
+            <h1 class="text-center">Agregar registros</h1>
 
-        <div class="row mt-4">
-            <div class="col-4">
-                <label for="exampleFormControlInput1">Nombre</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <div class="row mt-4">
+                <div class="col-4">
+                    <label for="exampleFormControlInput1">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="name@example.com">
+                </div>
+                <div class="col-4">
+                    <label for="exampleFormControlInput1">Descripcion Producto</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="name@example.com">
+                </div>
+                <div class="col-4">
+                    <label for="exampleFormControlInput1">Precio</label>
+                    <input type="text" class="form-control" id="precio" name="precio" placeholder="name@example.com">
+                </div>
             </div>
-            <div class="col-4">
-                <label for="exampleFormControlInput1">Descripcion Producto</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-            <div class="col-4">
-                 <label for="exampleFormControlInput1">Nombre Producto</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-            </div>
-        </div>
-        
-        <div class="row mt-4">
-            <div class="col-4">
-            <select class="form-control mb-3" name="categoria">
-                <option selected disabled>Seleccionar categoria</option>
-                <?php
-                    include ("conexion.php");
+            
+            <div class="row mt-4">
+                <div class="col-4">
+                <label for="exampleFormControlInput1">Categoria Producto</label>
+                    <select class="form-control mb-3" name="categoria">
+                        <option selected disabled>Seleccionar categoria</option>
+                        <?php
+                            include ("conexion.php");
 
-                    $sql= $conexion->query("SELECT * FROM categorias");
-                    while ($row= $sql ->fetch_assoc()){
-                        echo "<option value'".$row['Id']."'>".$row['NombreCategoria']."</option>";
+                            $sql= $conexion->query("SELECT * FROM categorias");
+                            while ($row= $sql ->fetch_assoc()){
+                                echo "<option value='".$row['Id']."'>".$row['NombreCategoria']."</option>";
 
-                    }
+                            }
 
-                    ?>
-            </select>
+                            ?>
+                    </select>
+                </div>
+
+                
+                <div class="col-4">
+                    <label for="exampleFormControlInput1">Marcas</label>
+                        <select class="form-control mb-3" id="marca" name="marca">
+                            <option selected disabled>Seleccionar marca</option>
+                            <?php
+                                include ("conexion.php");
+
+                                $sql= $conexion->query("SELECT * FROM marcas");
+                                while ($row= $sql ->fetch_assoc()){
+                                    echo "<option value='".$row['Id']."'>".$row['NombreMarca']."</option>";
+
+                                }
+
+                                ?>
+                        </select>
+                </div>
+                
             </div>
-        </div>
+            <div class="row">
+                    <div class="col-4 mt-4">
+                        <button type="submit" class="btn btn-danger">Enviar</div>
+
+                    </div>
+                </div>
+        </form>
     </div>
 
    
