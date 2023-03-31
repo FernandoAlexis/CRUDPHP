@@ -36,7 +36,7 @@
             <div class="row mt-4">
                 <div class="col-4">
                 <label for="exampleFormControlInput1">Categoria Producto</label>
-                    <select class="form-control mb-3" name="categoria">
+                    <select class="form-control mb-3" id="categoria" name="categoria">
                         <option selected disabled>Seleccionar categoria</option>
                         <?php
                             include ("conexion.php");
