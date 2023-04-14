@@ -55,7 +55,7 @@
                                     <th scope="row"><?php echo $resultado['Nombre']?></th>
                                     <th>
                                        
-                                        <button type="button" class="btn btn-warning" >Editar</button>
+                                        <a href="editar.php?id=<?php echo $resultado['IdProducto']?>" class="btn btn-warning">Editar</a>
                                         <button type="button" class="btn btn-danger">Eliminar</button>
                                     </th>
                                    
